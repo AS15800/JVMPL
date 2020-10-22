@@ -29,15 +29,12 @@ public class CreateProjectForm {
     }
 
     public CreateProjectForm() {
-        button1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame1 = new JFrame("Hello");
-                frame1.getContentPane().add(new MainGUI().getter());
-                frame1.pack();
-                frame1.setSize(600, 600);
-                frame1.setVisible(true);
-            }
+        button1.addActionListener(e -> {
+            frame1 = new JFrame("Hello");
+            frame1.getContentPane().add(new MainGUI().getter());
+            frame1.pack();
+            frame1.setSize(600, 600);
+            frame1.setVisible(true);
         });
         refresh.addActionListener(new ActionListener() {
             @Override
