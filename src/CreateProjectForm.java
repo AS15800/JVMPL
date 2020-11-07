@@ -16,8 +16,12 @@ public class CreateProjectForm {
     private JPanel MainContent;
     public  JLabel content;
     private JButton refresh;
+    private JButton writeButton;
+    private JButton readButton;
 
     public static JFrame frame1;
+
+    printProject printProject = new printProject();
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("App");
@@ -29,7 +33,7 @@ public class CreateProjectForm {
     }
 
     public CreateProjectForm() {
-        button1.addActionListener(e -> {
+        button1.addActionListener(e -> {    
             frame1 = new JFrame("Hello");
             frame1.getContentPane().add(new MainGUI().getter());
             frame1.pack();
@@ -40,12 +44,21 @@ public class CreateProjectForm {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                printProject printProject = new printProject();
-
                 content.setText(printProject.getProjectList());
             }
         });
+        writeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                printProject.WriteFile();
+            }
+        });
+        readButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                printProject.ReadFile();
+            }
+        });
     }
-
 
 }

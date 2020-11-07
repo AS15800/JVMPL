@@ -39,8 +39,6 @@ public class MainGUI {
                 projects.add(person);
 
                 CreateProjectForm.frame1.setVisible(false);
-
-
             }
         });
     }
