@@ -1,19 +1,11 @@
-import sun.applet.Main;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class CreateProjectForm {
 
     private JPanel panel1;
     private JButton button1;
-    private JPanel MainContent;
     public  JLabel content;
     private JButton refresh;
     private JButton writeButton;
@@ -40,25 +32,11 @@ public class CreateProjectForm {
             frame1.setSize(600, 600);
             frame1.setVisible(true);
         });
-        refresh.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        refresh.addActionListener(e -> content.setText(printProject.getProjectList()));
 
-                content.setText(printProject.getProjectList());
-            }
-        });
-        writeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                printProject.WriteFile();
-            }
-        });
-        readButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                printProject.ReadFile();
-            }
-        });
+        writeButton.addActionListener(e -> printProject.WriteFile());
+
+        readButton.addActionListener(e -> printProject.ReadFile());
     }
 
 }
