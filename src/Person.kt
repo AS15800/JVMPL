@@ -28,25 +28,34 @@ fun Person.heightInInches(): Float{
 }
 
 class printProject(){
+    //Replacing a few character in the string
     val projectList = Arrays.toString(MainGUI.projects.toTypedArray())
         .replace("[", "").replace("]", "")
 
     fun WriteFile(){
 
-        val fileName = File("C:\\Users\\adesh\\Desktop\\file1.txt")
-
-        fileName.bufferedWriter().use { out ->
-
-            out.write("Hello Niyaz\n")
-            out.write("Mr Potato\n")
+        val directory: File = File("Resources")
+        if (! directory.exists()){
+            directory.mkdir();
         }
+
+            //Setting a file path for the text file
+            val fileName = File("Resources\\file2.txt")
+
+            //Writting a certain string in the file
+            fileName.bufferedWriter().use { out ->
+
+                out.write("Hello Imposter\n")
+                out.write("Mr Potato\n")
+            }
 
         println("Writed to file")
     }
 
     fun ReadFile(){
-
-        val bufferedReader: BufferedReader = File("C:\\Users\\adesh\\Desktop\\file1.txt").bufferedReader()
+        //Read a specific file in a specific file path
+        val bufferedReader: BufferedReader = File("Resources\\file2.txt").bufferedReader()
+        //Read the text file
         val inputString = bufferedReader.use { it.readText() }
         println(inputString)
     }

@@ -24,6 +24,7 @@ public class CreateProjectForm {
         frame.setVisible(true);
     }
 
+    //Setting the details for the next frame
     public CreateProjectForm() {
         button1.addActionListener(e -> {    
             frame1 = new JFrame("Hello");
@@ -32,10 +33,14 @@ public class CreateProjectForm {
             frame1.setSize(600, 600);
             frame1.setVisible(true);
         });
+
+        //Get all the information from the ArrayList
         refresh.addActionListener(e -> content.setText(printProject.getProjectList()));
 
+        //Calling the Write method
         writeButton.addActionListener(e -> printProject.WriteFile());
 
+        //Calling the Read method
         readButton.addActionListener(e -> printProject.ReadFile());
     }
 

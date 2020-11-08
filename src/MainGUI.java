@@ -36,13 +36,15 @@ public class MainGUI {
                 String firstname = yourName.getText();
                 Person person = new Person(firstname, Integer.parseInt(yourAge.getText()), Integer.parseInt(yourHeight.getText()), Integer.parseInt(yourWeight.getText()), yourEmail.getText());
 
+                //Setting the "person" information to the ArrayList
                 projects.add(person);
 
+                //Making the form invisible
                 CreateProjectForm.frame1.setVisible(false);
             }
         });
     }
-
+    //Return to the main panel
     public JPanel getter(){
         return this.mainPanel;
     }
