@@ -18,6 +18,7 @@ public class MainGUI {
     private JPanel QPanel;
 
     public static ArrayList<Object> projects = new ArrayList<>();
+    printProject printProject = new printProject();
 
     /*public static void main(String[] args) {
         JFrame frame = new JFrame("App");
@@ -33,19 +34,28 @@ public class MainGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String firstname = yourName.getText();
-                Person person = new Person(firstname, Integer.parseInt(yourAge.getText()), Integer.parseInt(yourHeight.getText()), Integer.parseInt(yourWeight.getText()), yourEmail.getText());
+                if (yourName.getText().isEmpty() || yourAge.getText().isEmpty() || yourHeight.getText().isEmpty()
+                        || yourWeight.getText().isEmpty() || yourEmail.getText().isEmpty()) {
+                    System.out.println("Please enter all information above");
+                } else {
+                    String firstname = yourName.getText();
+                    Person person = new Person(firstname, Integer.parseInt(yourAge.getText()),
+                            Integer.parseInt(yourHeight.getText()), Integer.parseInt(yourWeight.getText()), yourEmail.getText());
 
-                //Setting the "person" information to the ArrayList
-                projects.add(person);
+                    //Setting the "person" information to the ArrayList
+                    projects.add(person);
+                    printProject.WriteFile(firstname, yourAge.getText());
+                    printProject.ReadFile();
 
-                //Making the form invisible
-                CreateProjectForm.frame1.setVisible(false);
+                    //Making the form invisible
+                    CreateProjectForm.frame1.setVisible(false);
+                }
             }
         });
     }
+
     //Return to the main panel
-    public JPanel getter(){
+    public JPanel getter() {
         return this.mainPanel;
     }
 }

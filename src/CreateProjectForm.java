@@ -8,20 +8,21 @@ public class CreateProjectForm {
     private JButton button1;
     public  JLabel content;
     private JButton refresh;
-    private JButton writeButton;
     private JButton readButton;
 
     public static JFrame frame1;
 
-    printProject printProject = new printProject();
+    public static printProject printProject = new printProject();
+    public static JFrame frame = new JFrame("App");
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("App");
+
         frame.setContentPane(new CreateProjectForm().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setSize(600, 600);
         frame.setVisible(true);
+        printProject.ReadFile();
     }
 
     //Setting the details for the next frame
@@ -35,13 +36,29 @@ public class CreateProjectForm {
         });
 
         //Get all the information from the ArrayList
-        refresh.addActionListener(e -> content.setText(printProject.getProjectList()));
-
-        //Calling the Write method
-        writeButton.addActionListener(e -> printProject.WriteFile());
+        /*refresh.addActionListener(e -> {
+            content.setText(printProject.getProjectList());
+        });*/
 
         //Calling the Read method
-        readButton.addActionListener(e -> printProject.ReadFile());
+        readButton.addActionListener(e -> {
+            printProject.ReadFile();
+        });
+    }
+
+    public static void createBtn(String projectTitle){
+        JButton btn = new JButton(projectTitle);
+        btn.setBounds(50, 100, 95, 30);
+        frame.revalidate();
+        frame.repaint();
+        frame.add(btn);
+
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(projectTitle);
+            }
+        });
     }
 
 }
